@@ -4,7 +4,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import { useState, useEffect } from "react";
 const Qrcode = () => {
   const [count, setCount] = useState(null);
-  useEffect(() => {
+  const scanHandle = () => {
     const scanner = new Html5QrcodeScanner("render", {
       qrbox: {
         width: 250,
@@ -20,10 +20,10 @@ const Qrcode = () => {
     function erroR(err) {
       console.error(err);
     }
-  }, []);
+  };
   return (
     <div className="bg-red-950 w-[200px]">
-        <p className="text-4xl">salom</p>
+      <button onClick={scanHandle}>start scanning</button>
       {count ? (
         <div>
           the result{" "}
