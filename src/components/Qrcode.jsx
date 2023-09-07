@@ -1,6 +1,6 @@
 import React from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
-
+import "./style.css"
 import { useState, useEffect } from "react";
 const Qrcode = () => {
   const [count, setCount] = useState(null);
