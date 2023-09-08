@@ -1,16 +1,28 @@
 import React from "react";
 import { useState } from "react";
 import QRCode from "qrcode.react";
+import { Wrapper } from "./style";
 const Creator = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(false);
+  const [link, setLink] = useState();
   const handleText = (e) => {
-    setText(e.target.value);
+    setLink(e.target.value);
   };
+
   return (
-    <div>
+    <Wrapper
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (link) {
+          setText(true);
+        }
+      }}
+    >
       <input type="text" onChange={handleText} />
-      {text && <QRCode value={text} />}
-    </div>
+
+      {text && <QRCode value={link} />}
+      <button type="submit">Get Qr Code</button>
+    </Wrapper>
   );
 };
 
